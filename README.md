@@ -60,3 +60,5 @@ services:
       - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=${DRONE_SECRET}
 ```
+
+* [Installation with GitHub](./installation/install-with-github.md)
