@@ -27,6 +27,8 @@ go install github.com/drone/drone/cmd/drone-server
 
 ## Install from Docker
 
+Please make sure that you are already install [docker-compose](https://docs.docker.com/compose/install/) tool.
+
 ```yml
 version: '2'
 
