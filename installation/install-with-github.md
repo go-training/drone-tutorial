@@ -1,4 +1,4 @@
-# Install Drone with Github
+# Install Drone with GitHub
 
 ## How to register OAuth application
 

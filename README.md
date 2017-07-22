@@ -61,4 +61,7 @@ services:
       - DRONE_SECRET=${DRONE_SECRET}
 ```
 
+## Drone Installation
+
 * [Installation with GitHub](./installation/install-with-github.md)
+* [Installation with GitLab](./installation/install-with-gitlab.md)
