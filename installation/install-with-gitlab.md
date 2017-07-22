@@ -16,4 +16,4 @@ Copy `Application ID` and `Secret`
 
 Open your drone home page in your browser and login as gitlab account.
 
-<img src="images/gitlab-setup-05.png" />
+<img src="images/gitlab-setup-04.png" />
