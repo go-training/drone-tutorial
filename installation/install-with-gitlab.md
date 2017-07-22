@@ -6,7 +6,7 @@ Go to your GitLab [profile setting](https://gitlab.com/profile) and navigate to 
 
 <img src="images/gitlab-setup-01.png" />
 
-Please make sure that your drone `Authorization callback URL` setting. It is very import the authorization callback URL matches your http(s) scheme and hostname exactly with **/authorize** as the path.
+Please make sure that your drone `Redirect URI` setting. It is very import the authorization callback URL matches your http(s) scheme and hostname exactly with **/authorize** as the path.
 
 <img src="images/gitlab-setup-02.png" />
 
