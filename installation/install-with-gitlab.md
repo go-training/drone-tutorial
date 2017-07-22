@@ -2,7 +2,7 @@
 
 ## How to register OAuth application
 
-Go to your GitLab [profile setting](https://gitlab.com/profile) and click `Applications` on top navbar.
+Go to your GitLab [profile setting](https://gitlab.com/profile) and navigate to your account settings and choose `Applications` from the menu.
 
 <img src="images/gitlab-setup-01.png" />
 
