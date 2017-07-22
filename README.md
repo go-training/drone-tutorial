@@ -27,7 +27,7 @@ go install github.com/drone/drone/cmd/drone-server
 
 ## Install from Docker
 
-```
+```yml
 version: '2'
 
 services:
