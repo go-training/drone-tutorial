@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:0.8
+    ports:
+      - 8080:8000
+      - 9000:9000
+    volumes:
+      - ./:/var/lib/drone/
+    restart: always
+    depends_on:
+      - mysql-server
+    environment:
+      - DRONE_HOST=https://559e3faa.ngrok.io
+      - DRONE_OPEN=true
+      - DRONE_SECRET=drone-workshop
+      - DRONE_ADMIN=appleboy
+
+      # GitHub Config
+      - DRONE_GITHUB=true
+      - DRONE_GITHUB_CLIENT=c8cf09279ae4cea67115
+      - DRONE_GITHUB_SECRET=88e91609a3428f270198f112d3c35f6b8aee5a11
+      - DRONE_GITHUB_SCOPE=repo,repo:status,user:email,read:org
+
+      # MySQL Database Setting
+      - DRONE_DATABASE_DRIVER=mysql
+      - DRONE_DATABASE_DATASOURCE=root:drone@tcp(mysql-server:3306)/drone?parseTime=true
+
+  drone-agent:
+    image: drone/agent:0.8
+    restart: always
+    depends_on:
+      - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=drone-workshop
+
+  mysql-server:
+    image: mysql:5.7.17
+    ports:
+      - 3308:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=drone
+      - MYSQL_ROOT_PASSWORD=drone
+
