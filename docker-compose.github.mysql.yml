@@ -37,6 +37,7 @@ services:
     environment:
       - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=drone-workshop
+      - DRONE_MAX_PROCS=3
 
   mysql-server:
     image: mysql:5.7.17
