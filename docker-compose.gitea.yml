@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:0.8
+    ports:
+      - 8080:8000
+      - 9000:9000
+    volumes:
+      - ./:/var/lib/drone/
+    restart: always
+    environment:
+      - DRONE_HOST=http://localhost:8080
+      - DRONE_OPEN=true
+      - DRONE_SECRET=drone-workshop
+      - DRONE_ADMIN=appleboy
+
+      # Gitea Config
+      - DRONE_GITEA=true
+      - DRONE_GITEA_URL=http://172.168.0.197:3002
+      - DRONE_GITEA_GIT_USERNAME=admin_username
+      - DRONE_GITEA_GIT_PASSWORD=admin_password
+
+  drone-agent:
+    image: drone/agent:0.8
+    restart: always
+    depends_on:
+      - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=drone-workshop
+      - DRONE_MAX_PROCS=3
