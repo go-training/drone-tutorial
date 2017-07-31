@@ -17,7 +17,7 @@ services:
 
       # Gitea Config
       - DRONE_GITEA=true
-      - DRONE_GITEA_URL=http://172.168.0.197:3002
+      - DRONE_GITEA_URL=https://try.gitea.io
       - DRONE_GITEA_GIT_USERNAME=admin_username
       - DRONE_GITEA_GIT_PASSWORD=admin_password
 
