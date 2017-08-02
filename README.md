@@ -4,7 +4,7 @@ Drone Continuous Delivery Documentation
 
 ## Install from Binary
 
-Separate server and agent binaries and images for [0.8.0-rc.2](http://docs.drone.io/release-0.8.0)
+Separate server and agent binaries and images for [0.8.0](http://docs.drone.io/release-0.8.0)
 
 ```sh
 #
