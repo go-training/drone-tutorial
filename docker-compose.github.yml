@@ -17,9 +17,8 @@ services:
 
       # GitHub Config
       - DRONE_GITHUB=true
-      - DRONE_GITHUB_CLIENT=c8cf09279ae4cea67115
-      - DRONE_GITHUB_SECRET=88e91609a3428f270198f112d3c35f6b8aee5a11
-      - DRONE_GITHUB_SCOPE=repo,repo:status,user:email,read:org
+      - DRONE_GITHUB_CLIENT=${CLIENT}
+      - DRONE_GITHUB_SECRET=${SECRET}
 
   drone-agent:
     image: drone/agent:0.8

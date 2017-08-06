@@ -65,3 +65,4 @@ services:
 
 * [Installation with GitHub](./installation/install-with-github.md)
 * [Installation with GitLab](./installation/install-with-gitlab.md)
+* [Installation with BitBucket](./installation/install-with-bitbucket.md)
