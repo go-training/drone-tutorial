@@ -15,7 +15,7 @@ services:
       - DRONE_SECRET=drone-workshop
       - DRONE_ADMIN=appleboy
 
-      # GitHub Config
+      # BitBucket Config
       - DRONE_BITBUCKET=true
       - DRONE_BITBUCKET_CLIENT=${CLIENT}
       - DRONE_BITBUCKET_SECRET=${SECRET}
