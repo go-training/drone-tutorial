@@ -4,7 +4,7 @@ Drone Continuous Delivery Documentation
 
 ## Install from Binary
 
-Separate server and agent binaries and images for [0.8.0](http://docs.drone.io/release-0.8.0)
+Separate server and agent binaries and images for [0.8.x](http://docs.drone.io/release-0.8.0)
 
 ```sh
 #
@@ -63,6 +63,12 @@ services:
 
 ## Drone Installation
 
-* [Installation with GitHub](./installation/install-with-github.md)
-* [Installation with GitLab](./installation/install-with-gitlab.md)
-* [Installation with BitBucket](./installation/install-with-bitbucket.md)
+* [Installation with GitHub][1]
+* [Installation with GitLab][2]
+* [Installation with BitBucket][3]
+* [Drone on Kubernetes on AWS][4]
+
+[1]:./installation/install-with-github.md
+[2]:./installation/install-with-gitlab.md
+[3]:./installation/install-with-bitbucket.md
+[4]:https://github.com/appleboy/drone-on-kubernetes/tree/master/aws
