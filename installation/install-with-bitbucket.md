@@ -18,6 +18,10 @@ Check the following OAuth Permissions
 
 <img src="images/bitbucket-setup-04.png" />
 
-Copy `Key` and `Secret` in `OAuth consumers`，Open your drone home page in your browser and login as BitBucket account.
+Copy `Key` and `Secret` in `OAuth consumers`
+
+<img src="images/bitbucket-setup-06.png" />
+
+Open your drone home page in your browser and login as BitBucket account.
 
 <img src="images/bitbucket-setup-05.png" />
