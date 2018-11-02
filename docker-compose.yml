@@ -5,12 +5,11 @@ services:
     image: drone/drone:0.8
     ports:
       - 8080:8000
-      - 9000:9000
     volumes:
       - ./:/var/lib/drone/
     restart: always
     environment:
-      - DRONE_HOST=http://example.com
+      - DRONE_HOST=${HOST}
       - DRONE_OPEN=true
       - DRONE_SECRET=drone-workshop
       - DRONE_ADMIN=appleboy
