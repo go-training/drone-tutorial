@@ -8,7 +8,6 @@ services:
       - 8082:443
     volumes:
       - ./:/data
-      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     environment:
       - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
