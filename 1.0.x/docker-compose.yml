@@ -17,6 +17,8 @@ services:
       - DRONE_GITHUB_SERVER=https://github.com
       - DRONE_GITHUB_CLIENT_ID=${DRONE_GITHUB_CLIENT_ID}
       - DRONE_GITHUB_CLIENT_SECRET=${DRONE_GITHUB_CLIENT_SECRET}
+      - DRONE_LOGS_PRETTY=true
+      - DRONE_LOGS_COLOR=true
 
   drone-agent:
     image: drone/agent:1.0.0-rc.1
