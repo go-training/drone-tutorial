@@ -5,8 +5,6 @@ services:
     image: drone/drone:1.0.0-rc.1
     ports:
       - 8081:80
-    volumes:
-      - ./:/data
     restart: always
     environment:
       - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
