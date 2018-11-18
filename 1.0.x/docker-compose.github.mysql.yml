@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:1.0.0-rc.1
+    ports:
+      - 8081:80
+    volumes:
+      - ./:/data
+    restart: always
+    environment:
+      - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
+      - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
+      - DRONE_TLS_AUTOCERT=false
+      - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
+      - DRONE_DATABASE_DATASOURCE=root:drone@tcp(mysql-server:3306)/drone?parseTime=true
+      # GitHub Config
+      - DRONE_GITHUB_SERVER=https://github.com
+      - DRONE_GITHUB_CLIENT_ID=${DRONE_GITHUB_CLIENT_ID}
+      - DRONE_GITHUB_CLIENT_SECRET=${DRONE_GITHUB_CLIENT_SECRET}
+      - DRONE_LOGS_PRETTY=true
+      - DRONE_LOGS_COLOR=true
+
+  drone-agent:
+    image: drone/agent:1.0.0-rc.1
+    restart: always
+    depends_on:
+      - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_RPC_SERVER=http://drone-server
+      - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
+      - DRONE_RUNNER_CAPACITY=3
+
+  mysql-server:
+    image: mysql:5.7
+    ports:
+      - 3308:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=drone
+      - MYSQL_ROOT_PASSWORD=drone
+
+volumes:
+  mysql-data:
