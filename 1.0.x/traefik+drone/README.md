@@ -19,3 +19,28 @@ $ chmod 600 /opt/traefik/acme.json
 ```sh
 $ cd /opt/traefik/ && docker-compose up -d
 ```
+
+## Setup the single server of Drone
+
+1. copy `drone` folder to `/home/`
+
+```sh
+$ cp -r traefik /home/
+```
+
+2. update the drone setting in `.env`
+
+```
+DRONE_SERVER_HOST=example.com
+DRONE_SERVER_PROTO=http
+DRONE_GITHUB_CLIENT_ID=xxxx
+DRONE_GITHUB_CLIENT_SECRET=xxxx
+```
+
+3 start the drone service.
+
+```sh
+$ cd /home/drone/ && docker-compose up -d
+```
+
+4. open the drone link in your browser
