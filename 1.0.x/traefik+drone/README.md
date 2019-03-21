@@ -14,7 +14,13 @@ $ cp -r traefik /opt/
 $ chmod 600 /opt/traefik/acme.json
 ```
 
-3. Start the traefik service using Docker
+3. create `web` docker network
+
+```sh
+$ docker network create web
+```
+
+4. Start the traefik service using Docker
 
 ```sh
 $ cd /opt/traefik/ && docker-compose up -d
