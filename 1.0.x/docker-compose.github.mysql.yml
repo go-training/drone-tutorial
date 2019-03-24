@@ -2,7 +2,7 @@ version: '2'
 
 services:
   drone-server:
-    image: drone/drone:1.0.0
+    image: drone/drone:1
     ports:
       - 8081:80
     restart: always
@@ -20,7 +20,7 @@ services:
       - DRONE_LOGS_COLOR=true
 
   drone-agent:
-    image: drone/agent:1.0.0
+    image: drone/agent:1
     restart: always
     depends_on:
       - drone-server
