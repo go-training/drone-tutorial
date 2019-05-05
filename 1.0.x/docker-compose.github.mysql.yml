@@ -11,6 +11,7 @@ services:
       - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
       - DRONE_TLS_AUTOCERT=false
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
+      - DRONE_AGENTS_ENABLED=true
       - DRONE_DATABASE_DATASOURCE=root:drone@tcp(mysql-server:3306)/drone?parseTime=true
       # GitHub Config
       - DRONE_GITHUB_SERVER=https://github.com
