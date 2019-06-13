@@ -8,7 +8,7 @@
     - "{{ drone_dir }}"
   when: drone_server == 'yes'
   tags:
-    - cpc
+    - drone-server
 
 - name: run drone server
   docker_container:
