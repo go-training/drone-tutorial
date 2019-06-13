@@ -11,4 +11,5 @@ steps:
   pull: always
   image: golang:1.12
   commands:
-  - echo "test"
+  - echo "test1"
+  - echo "test2"
