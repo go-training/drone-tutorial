@@ -1,0 +1,14 @@
+---
+kind: pipeline
+name: testing
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: testing
+  pull: always
+  image: golang:1.12
+  commands:
+  - echo "test"

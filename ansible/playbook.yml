@@ -24,6 +24,7 @@
 
 - hosts:
     - drone_server
+    - drone_agent
   roles:
     - drone
   become: true
