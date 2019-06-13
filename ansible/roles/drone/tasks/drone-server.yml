@@ -6,7 +6,7 @@
     mode: 0755
   with_items:
     - "{{ drone_dir }}"
-  when: drone_server == 'yes'
+  when: drone_server_enable == 'yes'
   tags:
     - drone-server
 
