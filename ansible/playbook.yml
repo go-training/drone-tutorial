@@ -25,6 +25,6 @@
 - hosts:
     - drone_server
   roles:
-    - drone-server
+    - drone
   become: true
   become_user: root

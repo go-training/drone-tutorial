@@ -1,3 +1,5 @@
+drone_server_enable: "false"
+drone_agent_enable: "false"
 drone_version: "latest"
 drone_server_host: ""
 drone_server_proto: "http"

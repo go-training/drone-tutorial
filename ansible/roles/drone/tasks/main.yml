@@ -1,2 +1,3 @@
 ---
   - include: drone-server.yml
+  - include: drone-agent.yml
