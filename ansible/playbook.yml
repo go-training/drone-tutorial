@@ -1,0 +1,23 @@
+- hosts:
+    - drone_server
+    - drone_agent
+  gather_facts: False
+  tasks:
+    - name: bootstrap
+      raw: |
+        test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+        test -e /usr/local/bin/pip || (curl  https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py && pip install docker-py)
+      changed_when: False
+      become: true
+      become_user: root
+      register: out
+    - debug: var=out.stdout_lines
+
+- hosts:
+    - drone_server
+    - drone_agent
+  roles:
+    - base
+    - docker
+  become: true
+  become_user: root

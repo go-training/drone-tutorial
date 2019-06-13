@@ -1,0 +1,15 @@
+docker_deps:
+  - apt-transport-https
+  - ca-certificates
+  - software-properties-common
+
+docker_packages:
+  - docker-ce
+
+docker_services:
+  - docker
+
+docker_compose_url: https://github.com/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64
+docker_compose_checksum: 223f149e2048c7d18fd6a57af213c4d451a06a42
+
+docker_opts: "--bip=192.168.1.10/24 --fixed-cidr=192.168.1.0/24"
