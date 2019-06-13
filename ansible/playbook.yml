@@ -21,3 +21,10 @@
     - docker
   become: true
   become_user: root
+
+- hosts:
+    - drone_server
+  roles:
+    - drone-server
+  become: true
+  become_user: root
