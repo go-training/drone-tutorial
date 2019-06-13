@@ -17,7 +17,7 @@
     state: started
     restart_policy: always
     ports:
-      - "8081:80"
+      - "{{ drone_host_port }}:80"
     volumes:
       - "{{ drone_dir }}:/data"
     env:
