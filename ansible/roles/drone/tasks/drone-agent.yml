@@ -1,4 +1,12 @@
 ---
+- name: copy config for drone agent
+  template:
+    src: "drone-agent.env.j2"
+    dest: "/etc/drone/drone-agent.env"
+  register: drone_agent_config
+  tags:
+    - configuration
+
 - name: run drone agent
   docker_container:
     name: "drone-agent"
@@ -7,9 +15,7 @@
     restart_policy: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env:
-      DRONE_RPC_SERVER={{ drone_rpc_server }}
-      DRONE_RPC_SECRET={{ drone_rpc_secret }}
-      DRONE_RUNNER_CAPACITY={{ drone_runner_capacity }}
+    env_file: /etc/drone/drone-agent.env
+  when: drone_agent_config is defined and drone_agent_config.changed
   tags:
     - drone-agent

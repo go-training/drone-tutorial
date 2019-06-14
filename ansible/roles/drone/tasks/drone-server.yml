@@ -1,5 +1,13 @@
 ---
-- name: Creates directory
+- name: copy config for drone server
+  template:
+    src: "drone-server.env.j2"
+    dest: "/etc/drone/drone-server.env"
+  register: drone_server_config
+  tags:
+    - configuration
+
+- name: Creates sqlite directory
   file:
     path: "{{ item }}"
     state: directory
@@ -19,16 +27,7 @@
       - "{{ drone_host_port }}:80"
     volumes:
       - "{{ drone_dir }}:/data"
-    env:
-      DRONE_SERVER_HOST: "{{ drone_server_host }}"
-      DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
-      DRONE_TLS_AUTOCERT: "false"
-      DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
-      DRONE_AGENTS_ENABLED: "true"
-      DRONE_GITHUB_SERVER: "https://github.com"
-      DRONE_GITHUB_CLIENT_ID: "{{ drone_github_client_id }}"
-      DRONE_GITHUB_CLIENT_SECRET: "{{ drone_github_client_secret }}"
-      DRONE_LOGS_PRETTY: "{{ drone_logs_pretty }}"
-      DRONE_LOGS_COLOR: "{{ drone_logs_color }}"
+    env_file: /etc/drone/drone-server.env
+  when: drone_server_config is defined and drone_server_config.changed
   tags:
     - drone-server
