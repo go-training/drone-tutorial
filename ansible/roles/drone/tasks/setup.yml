@@ -1,0 +1,16 @@
+---
+- name: verify that required parameters are set for drone general setup
+  fail:
+    msg: "Variable '{{ item }}' is not defined for drone general setup"
+  when: item not in vars
+  with_items:
+     - drone_rpc_secret
+  tags:
+    - configuration
+
+- name: add config folder for drone
+  file:
+    path: "/etc/drone"
+    state: "directory"
+  tags:
+    - configuration
