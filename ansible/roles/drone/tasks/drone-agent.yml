@@ -2,15 +2,14 @@
 - name: run drone agent
   docker_container:
     name: "drone-agent"
-    image: "drone/agent:{{drone_version}}"
+    image: "drone/agent:{{ drone_version }}"
     state: started
     restart_policy: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     env:
-      DRONE_RPC_SERVER={{ drone_rpc_server}}
+      DRONE_RPC_SERVER={{ drone_rpc_server }}
       DRONE_RPC_SECRET={{ drone_rpc_secret }}
       DRONE_RUNNER_CAPACITY={{ drone_runner_capacity }}
-  when: drone_agent_enable == 'yes'
   tags:
     - drone-agent

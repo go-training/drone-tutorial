@@ -1,3 +1,5 @@
 ---
   - include: drone-server.yml
+    when: drone_server_enable == "true"
   - include: drone-agent.yml
+    when: drone_agent_enable == "true"

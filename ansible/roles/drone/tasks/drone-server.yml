@@ -6,7 +6,6 @@
     mode: 0755
   with_items:
     - "{{ drone_dir }}"
-  when: drone_server_enable == 'yes'
   tags:
     - drone-server
 
@@ -31,6 +30,5 @@
       DRONE_GITHUB_CLIENT_SECRET: "{{ drone_github_client_secret }}"
       DRONE_LOGS_PRETTY: "{{ drone_logs_pretty }}"
       DRONE_LOGS_COLOR: "{{ drone_logs_color }}"
-  when: drone_server_enable == 'yes'
   tags:
     - drone-server
