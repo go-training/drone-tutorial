@@ -1,4 +1,13 @@
 ---
+- name: verify that required parameters are set for drone agent setup
+  fail:
+    msg: "Variable '{{ item }}' is not defined for drone agent setup"
+  when: item not in vars
+  with_items:
+     - drone_server_host
+  tags:
+    - configuration
+
 - name: copy config for drone agent
   template:
     src: "drone-agent.env.j2"
