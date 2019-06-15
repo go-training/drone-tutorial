@@ -17,7 +17,7 @@
   tags:
     - drone-server
 
-- name: run drone server
+- name: run drone server with sqlite database
   docker_container:
     name: drone-server
     image: "drone/drone:{{ drone_version }}"
@@ -28,7 +28,27 @@
     volumes:
       - "{{ drone_sqlite_dir }}:/data"
     env_file: /etc/drone/drone-server.env
-  when: (drone_server_config is defined and drone_server_config.changed) or
-        (drone_sqlite_folder is defined and drone_sqlite_folder.changed)
+  when: ((drone_server_config is defined and drone_server_config.changed) or
+        (drone_sqlite_folder is defined and drone_sqlite_folder.changed)) and
+        drone_database_driver == "sqlite"
+  tags:
+    - drone-server
+
+- name: run drone server with postgres or mysql database
+  docker_container:
+    name: drone-server
+    image: "drone/drone:{{ drone_version }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "{{ drone_host_port }}:80"
+    links:
+      - "{{ drone_database_driver }}"
+    volumes:
+      - "{{ drone_sqlite_dir }}:/data"
+    env_file: /etc/drone/drone-server.env
+  when: ((drone_server_config is defined and drone_server_config.changed) or
+        (drone_postgress_data_dir is defined and drone_postgress_data_dir.changed)) and
+        drone_database_driver != "sqlite"
   tags:
     - drone-server

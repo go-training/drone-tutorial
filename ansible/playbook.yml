@@ -35,6 +35,8 @@
     drone_server_host: "368a7a66.ngrok.io"
     drone_server_proto: "https"
     drone_rpc_secret: "30075d074bfd9e74cfd0b84a5886b986"
+    drone_database_driver: "postgres"
+    drone_database_datasource: "postgres://drone:drone@postgres:5432/drone?sslmode=disable"
 
 - hosts: drone_agent
   roles:

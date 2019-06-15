@@ -1,0 +1,27 @@
+---
+- name: Creates postgres directory
+  file:
+    path: "{{ drone_postgress_data_dir }}"
+    state: directory
+    mode: 0755
+  register: drone_postgress_data_dir
+  tags:
+    - postgres
+
+- name: start postgres for drone ci
+  docker_container:
+    name: postgres
+    image: postgres:11
+    state: started
+    restart_policy: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - "{{ drone_postgress_data_dir }}:/var/lib/postgresql/data"
+    env:
+      POSTGRES_PASSWORD: "{{ drone_postgress_password }}"
+      POSTGRES_USER: "{{ drone_postgress_user }}"
+      POSTGRES_DB: "{{ drone_postgress_db }}"
+  when: drone_postgress_data_dir is defined and drone_postgress_data_dir.changed
+  tags:
+    - postgres
