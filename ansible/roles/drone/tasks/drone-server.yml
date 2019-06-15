@@ -9,11 +9,11 @@
 
 - name: Creates sqlite directory
   file:
-    path: "{{ item }}"
+    path: "{{ drone_sqlite_dir }}"
     state: directory
     mode: 0755
-  with_items:
-    - "{{ drone_dir }}"
+  when: drone_database_driver == "sqlite"
+  register: drone_sqlite_folder
   tags:
     - drone-server
 
@@ -26,8 +26,9 @@
     ports:
       - "{{ drone_host_port }}:80"
     volumes:
-      - "{{ drone_dir }}:/data"
+      - "{{ drone_sqlite_dir }}:/data"
     env_file: /etc/drone/drone-server.env
-  when: drone_server_config is defined and drone_server_config.changed
+  when: (drone_server_config is defined and drone_server_config.changed) or
+        (drone_sqlite_folder is defined and drone_sqlite_folder.changed)
   tags:
     - drone-server
