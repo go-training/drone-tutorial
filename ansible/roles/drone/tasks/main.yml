@@ -1,8 +1,0 @@
----
-  - include: setup.yml
-  - include: drone-database.yml
-    when: drone_server_enable == "true" and drone_database_driver != "sqlite"
-  - include: drone-server.yml
-    when: drone_server_enable == "true"
-  - include: drone-agent.yml
-    when: drone_agent_enable == "true"
