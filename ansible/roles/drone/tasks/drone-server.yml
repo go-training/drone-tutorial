@@ -48,7 +48,7 @@
       - "{{ drone_sqlite_dir }}:/data"
     env_file: /etc/drone/drone-server.env
   when: ((drone_server_config is defined and drone_server_config.changed) or
-        (drone_postgress_data_dir is defined and drone_postgress_data_dir.changed)) and
+        (drone_postgres_data_dir is defined and drone_postgres_data_dir.changed)) or
         drone_database_driver != "sqlite"
   tags:
     - drone-server

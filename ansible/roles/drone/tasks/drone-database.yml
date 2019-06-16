@@ -1,12 +1,14 @@
 ---
 - name: Creates postgres directory
   file:
-    path: "{{ drone_postgress_data_dir }}"
+    path: "{{ drone_postgres_data_dir }}"
     state: directory
     mode: 0755
-  register: drone_postgress_data_dir
+  register: drone_postgres_data_dir
+  when: drone_database_driver == "postgres"
   tags:
     - postgres
+    - database
 
 - name: start postgres for drone ci
   docker_container:
@@ -17,11 +19,45 @@
     ports:
       - "5432:5432"
     volumes:
-      - "{{ drone_postgress_data_dir }}:/var/lib/postgresql/data"
+      - "{{ drone_postgres_data_dir }}:/var/lib/postgresql/data"
     env:
-      POSTGRES_PASSWORD: "{{ drone_postgress_password }}"
-      POSTGRES_USER: "{{ drone_postgress_user }}"
-      POSTGRES_DB: "{{ drone_postgress_db }}"
-  when: drone_postgress_data_dir is defined and drone_postgress_data_dir.changed
+      POSTGRES_PASSWORD: "{{ drone_postgres_password }}"
+      POSTGRES_USER: "{{ drone_postgres_user }}"
+      POSTGRES_DB: "{{ drone_postgres_db }}"
+  when: drone_postgres_data_dir is defined and drone_postgres_data_dir.changed or
+        drone_database_driver == "postgres"
   tags:
     - postgres
+    - database
+
+- name: Creates mysql directory
+  file:
+    path: "{{ drone_mysql_data_dir }}"
+    state: directory
+    mode: 0755
+  register: drone_mysql_data_dir
+  when: drone_database_driver == "mysql"
+  tags:
+    - mysql
+    - database
+
+- name: start mysql for drone ci
+  docker_container:
+    name: mysql
+    image: mysql:5.7
+    state: started
+    restart_policy: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - "{{ drone_mysql_data_dir }}:/var/lib/mysqlql/data"
+    env:
+      MYSQL_PASSWORD: "{{ drone_mysql_password }}"
+      MYSQL_USER: "{{ drone_mysql_user }}"
+      MYSQL_DATABASE: "{{ drone_mysql_db }}"
+      MYSQL_ROOT_PASSWORD: "{{ drone_mysql_password }}"
+  when: drone_mysql_data_dir is defined and drone_mysql_data_dir.changed or
+        drone_database_driver == "mysql"
+  tags:
+    - mysql
+    - database
