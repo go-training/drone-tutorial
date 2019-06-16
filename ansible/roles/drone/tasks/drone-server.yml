@@ -1,4 +1,13 @@
 ---
+- name: verify that required database parameters
+  fail:
+    msg: "Variable '{{ item }}' is not defined for drone server setup"
+  when: item not in vars and drone_database_driver != "sqlite"
+  with_items:
+     - drone_database_datasource
+  tags:
+    - configuration
+
 - name: copy config for drone server
   template:
     src: "drone-server.env.j2"
