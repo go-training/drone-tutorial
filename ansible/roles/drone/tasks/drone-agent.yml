@@ -4,7 +4,7 @@
     msg: "Variable '{{ item }}' is not defined for drone agent setup"
   when: item not in vars
   with_items:
-     - drone_server_host
+     - drone_rpc_server
   tags:
     - configuration
 
