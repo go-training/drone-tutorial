@@ -13,7 +13,8 @@
       register: out
     - debug: var=out.stdout_lines
 
-- hosts: drone_server
+- name: "deploy drone server."
+  hosts: drone_server
   become: true
   become_user: root
   roles:
@@ -21,7 +22,8 @@
   vars_files:
     - vars/drone-server.yml
 
-- hosts: drone_agent
+- name: "deploy drone agent."
+  hosts: drone_agent
   become: true
   become_user: root
   roles:
