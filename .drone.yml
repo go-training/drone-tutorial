@@ -9,7 +9,7 @@ platform:
 steps:
 - name: testing
   pull: always
-  image: golang:1.12
+  image: golang:1.12-alpine
   commands:
   - echo "test1"
   - echo "test2"
