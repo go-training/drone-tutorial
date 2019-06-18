@@ -1,6 +1,6 @@
 drone_agent_enable: "true"
 drone_version: "latest"
-drone_rpc_server: "http://192.168.64.2:8081"
+drone_rpc_server: "http://192.168.64.7:8080"
 drone_rpc_secret: "30075d074bfd9e74cfd0b84a5886b986"
 docker_compose_version: "1.24.0"
 docker_users:
