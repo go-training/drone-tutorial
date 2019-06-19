@@ -7,9 +7,19 @@ platform:
   arch: amd64
 
 steps:
-- name: testing
+- name: testing1
   pull: always
   image: golang:1.12-alpine
   commands:
   - echo "test1"
   - echo "test2"
+
+- name: testing2
+  pull: always
+  image: docker.mediatek.io/cpc/cpc
+  commands:
+  - echo "test1"
+  - echo "test2"
+
+image_pull_secrets:
+- dockerconfigjson
