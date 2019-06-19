@@ -16,7 +16,7 @@ steps:
 
 - name: testing2
   pull: always
-  image: docker.mediatek.io/cpc/cpc
+  image: docker.mediatek.io/cpc/cpc2
   commands:
   - echo "test1"
   - echo "test2"
