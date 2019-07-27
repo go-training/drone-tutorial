@@ -1,5 +1,10 @@
 # Install Drone with Bitbucket
 
+See the online documentaion:
+
+* Bitbucket Cloud: [Single Machine](https://docs.drone.io/installation/bitbucket-cloud/single-machine/) | [Multi-Machine](https://docs.drone.io/installation/bitbucket-cloud/multi-machine/)
+* Bitbucket Server: [Single Machine](https://docs.drone.io/installation/bitbucket-server/single-machine/) | [Multi-Machine](https://docs.drone.io/installation/bitbucket-server/multi-machine/) 
+
 ## How to register OAuth application
 
 Go to your account setting in bitbucket, click `OAuth` under `ACCESS MANAGEMENT` menu on left sidebar and click `Add consumer` under `OAuth consumers`.
