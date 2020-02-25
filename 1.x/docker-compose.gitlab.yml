@@ -12,7 +12,6 @@ services:
       - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
       - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
-      - DRONE_AGENTS_ENABLED=true
       # Gitlab Config
       - DRONE_GITLAB_SERVER=https://gitlab.com
       - DRONE_GITLAB_CLIENT_ID=${DRONE_GITLAB_CLIENT_ID}
@@ -20,8 +19,9 @@ services:
       - DRONE_LOGS_PRETTY=true
       - DRONE_LOGS_COLOR=true
 
-  drone-agent:
-    image: drone/agent:1
+  # runner for docker version
+  drone-runner:
+    image: drone/drone-runner-docker:1
     restart: always
     depends_on:
       - drone-server
