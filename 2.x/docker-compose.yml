@@ -36,3 +36,5 @@ services:
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
       - DRONE_RUNNER_CAPACITY=2
       - DRONE_RUNNER_NAME=my-first-runner
+      - DRONE_DEBUG=true
+      - DRONE_TRACE=true
