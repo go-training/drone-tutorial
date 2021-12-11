@@ -16,3 +16,23 @@ steps:
   image: alpine
   commands:
   - echo bonjour monde
+
+---
+kind: pipeline
+type: docker
+name: foobar
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hello world
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour monde
