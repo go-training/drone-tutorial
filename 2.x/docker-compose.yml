@@ -20,6 +20,8 @@ services:
 
       - DRONE_LOGS_PRETTY=true
       - DRONE_LOGS_COLOR=true
+      - DRONE_DEBUG=true
+      - DRONE_TRACE=true
 
   drone-runner:
     image: drone/drone-runner-docker:1
