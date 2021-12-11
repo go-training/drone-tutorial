@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   drone-server:
@@ -20,3 +20,19 @@ services:
 
       - DRONE_LOGS_PRETTY=true
       - DRONE_LOGS_COLOR=true
+
+  drone-runner:
+    image: drone/drone-runner-docker:1
+    restart: always
+    depends_on:
+      - drone-server
+    ports:
+      - 3000:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_RPC_HOST=${DRONE_SERVER_HOST}
+      - DRONE_RPC_PROTO=${DRONE_SERVER_PROTO}
+      - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
+      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_RUNNER_NAME=my-first-runner
