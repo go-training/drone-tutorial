@@ -1,30 +1,10 @@
 kind: pipeline
 type: docker
-name: greeting
+name: default
 
 steps:
-- name: en
+- name: greeting
   image: alpine
   commands:
-  - echo hello world
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour monde
-
----
-kind: pipeline
-type: docker
-name: foobar
-
-steps:
-- name: en
-  image: alpine
-  commands:
-  - echo hello world
-
-- name: fr
-  image: alpine
-  commands:
-  - echo bonjour monde
+  - echo hello
+  - echo world
